@@ -56,7 +56,7 @@ app = FastAPI(
 # Enable CORS for local development on any localhost port
 app.add_middleware(
     CORSMiddleware,
-    allow_origin_regex=r"^http://(localhost|127\.0\.0\.1)(:\d+)?$",
+    allow_origins = ["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -261,4 +261,4 @@ def get_memory_match_for_execution(
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", 8001))
-    uvicorn.run("main:app", host="127.0.0.1", port=port, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
